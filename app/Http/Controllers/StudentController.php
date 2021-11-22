@@ -24,4 +24,24 @@ class StudentController extends Controller
         $student->save();
         return $student; //Devolver respuesta
     }
+
+    //READ (SELECT)
+    public function getStudents(){
+        return student::all();
+    }
+
+    //UPDATE
+    public function updateStudent(Request $request, $id){
+        student::where('id', $id)
+        ->update(['name' => $request->nombre, 
+        'lastname' => $request->apellido]);
+        return student::find($id);
+    }
+
+    //DELETE
+    public function deleteStudent($id){
+        $student = student::find($id);
+        $student->delete();
+        return $student;
+    }
 }

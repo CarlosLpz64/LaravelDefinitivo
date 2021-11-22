@@ -19,4 +19,23 @@ class GroupController extends Controller
         $group->save();
         return $group; //Devolver respuesta
     }
+
+    //READ (SELECT)
+    public function getGroups(){
+        return group::all();
+    }
+
+    //UPDATE
+    public function updateGroup(Request $request, $id){
+        group::where('id', $id)
+        ->update(['name' => $request->nombre]);
+        return group::find($id);
+    }
+
+    //DELETE
+    public function deleteGroup($id){
+        $group = group::find($id);
+        $group->delete();
+        return $group;
+    }
 }

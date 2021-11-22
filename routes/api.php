@@ -29,10 +29,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/createGroup', [GroupController::class, 'createGroup']); //http://localhost:8000/api/createGroup
 Route::post('/createStudent', [StudentController::class, 'createStudent']); //http://localhost:8000/api/createStudent
 //READ
-
+Route::get('/getGroups', [GroupController::class, 'getGroups']); //http://localhost:8000/api/getGroups
+Route::get('/getStudents', [StudentController::class, 'getStudents']); //http://localhost:8000/api/getStudents
 //UPDATE
-
+Route::post('/updateGroup/{id}', [GroupController::class, 'updateGroup'], function ($id) {}); //http://localhost:8000/api/updateGroup/{id}
+Route::post('/updateStudent/{id}', [StudentController::class, 'updateStudent'], function ($id) {}); //http://localhost:8000/api/updateStudent/{id}
 //DELETE
+Route::delete('/deleteGroup/{id}', [GroupController::class, 'deleteGroup'], function ($id){}); //http://localhost:8000/api/deleteGroup/{id}
+Route::delete('/deleteStudent/{id}', [StudentController::class, 'deleteStudent'], function ($id){}); //http://localhost:8000/api/deleteStudent/{id}
 
 //API EXTERNA/////////
 Route::get('/getApiAjena', [ApisExController::class, 'getApiAjena']); //http://localhost:8000/api/getApiAjena
