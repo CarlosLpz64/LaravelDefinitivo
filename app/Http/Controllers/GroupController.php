@@ -11,6 +11,13 @@ use App\Models\group; //Modelo a utilizar
 class GroupController extends Controller
 {
 
+    //CONSTRUCTOR
+    public function __construct() {
+        $this->middleware('auth:api', ['except' => ['updateGroup']]);
+        // $this->middleware('auth:api', ['except' => ['login', 'register']]); // Necesario para excepciones
+        //$this->middleware('auth:api'); // Sin excepciones
+    }
+
     //CREATE (INSERT)
     public function createGroup(Request $request)
     {    

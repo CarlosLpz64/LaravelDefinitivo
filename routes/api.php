@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GroupController; //Necesario
 use App\Http\Controllers\StudentController; //Necesario
 use App\Http\Controllers\ApisExController; //Necesario
+use App\Http\Controllers\AuthController; //Necesario
+
 
 
 
@@ -21,9 +23,14 @@ use App\Http\Controllers\ApisExController; //Necesario
 |
 */
 
+/*
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+*/
+
+//ENDPOINTS//
+
 //CRUD///////////////
 //CREATE
 Route::post('/createGroup', [GroupController::class, 'createGroup']); //http://localhost:8000/api/createGroup
@@ -40,4 +47,21 @@ Route::delete('/deleteStudent/{id}', [StudentController::class, 'deleteStudent']
 
 //API EXTERNA/////////
 Route::get('/getApiAjena', [ApisExController::class, 'getApiAjena']); //http://localhost:8000/api/getApiAjena
+
+//USERS AUTH/////////
+/*
+Route::post('/register', [AuthController::class, 'register']); //http://localhost:8000/api/register
+Route::post('/login', [AuthController::class, 'login']); //http://localhost:8000/api/login
+*/
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'auth'
+
+], function ($router) {
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/register', [AuthController::class, 'register']);
+    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::post('/refresh', [AuthController::class, 'refresh']);
+    Route::get('/user-profile', [AuthController::class, 'userProfile']);    
+});
 
