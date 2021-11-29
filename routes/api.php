@@ -47,6 +47,7 @@ Route::delete('/deleteStudent/{id}', [StudentController::class, 'deleteStudent']
 
 //API EXTERNA/////////
 Route::get('/getApiAjena', [ApisExController::class, 'getApiAjena']); //http://localhost:8000/api/getApiAjena
+Route::get('/getAPIGuzzler', [ApisExController::class, 'getAPIGuzzler']); //http://localhost:8000/api/getAPIGuzzler
 
 //USERS AUTH/////////
 /*

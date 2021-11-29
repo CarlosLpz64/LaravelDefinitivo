@@ -27,4 +27,10 @@ class ApisExController extends Controller
         //return $posts; //DEVUELVE TODO EL ARREGLO
         return ($postUser1); //DEVUELVE VALOR FILTRADO
     }
+
+    public function getAPIGuzzler(){
+        $response = Http::get('https://jsonplaceholder.typicode.com/posts');
+        $response = json_decode($response->body());
+        return $response;
+    }
 }
