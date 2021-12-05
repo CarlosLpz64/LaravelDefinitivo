@@ -49,11 +49,15 @@ Route::delete('/deleteStudent/{id}', [StudentController::class, 'deleteStudent']
 Route::get('/getApiAjena', [ApisExController::class, 'getApiAjena']); //http://localhost:8000/api/getApiAjena
 Route::get('/getAPIGuzzler', [ApisExController::class, 'getAPIGuzzler']); //http://localhost:8000/api/getAPIGuzzler
 
+//API ADAFRUIT/////////
+Route::get('/getNFC', [ApisExController::class, 'getNFC']); //http://localhost:8000/api/getNFC
+Route::get('/getFirstNFC', [ApisExController::class, 'getFirstNFC']); //http://localhost:8000/api/getFirstNFC
+Route::get('/getDateNFC', [ApisExController::class, 'getDateNFC']); //http://localhost:8000/api/getDateNFC
+Route::get('/getRangeNFC', [ApisExController::class, 'getRangeNFC']); //http://localhost:8000/api/getRangeNFC
+Route::get('/getJustNFC', [ApisExController::class, 'getJustNFC']); //http://localhost:8000/api/getJustNFC
+
+
 //USERS AUTH/////////
-/*
-Route::post('/register', [AuthController::class, 'register']); //http://localhost:8000/api/register
-Route::post('/login', [AuthController::class, 'login']); //http://localhost:8000/api/login
-*/
 Route::group([
     'middleware' => 'api',
     'prefix' => 'auth'
